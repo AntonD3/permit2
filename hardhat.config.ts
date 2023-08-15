@@ -1,6 +1,8 @@
 import '@matterlabs/hardhat-zksync-deploy'
 import '@matterlabs/hardhat-zksync-solc'
 import '@matterlabs/hardhat-zksync-verify'
+import '@nomicfoundation/hardhat-toolbox'
+import '@matterlabs/hardhat-zksync-chai-matchers'
 import { task } from 'hardhat/config'
 import deploy from './script/deploy'
 
@@ -19,6 +21,11 @@ export default {
       ethNetwork: 'http://localhost:8545',
       zksync: true,
     },
+    zkSyncTestNode: {
+      url: "http://localhost:8011",
+      ethNetwork: "http://localhost:8545",
+      zksync: true,
+    },
     zkSyncTestnet: {
       url: 'https://testnet.era.zksync.dev',
       ethNetwork: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
@@ -32,7 +39,7 @@ export default {
       verifyURL: 'https://zksync2-mainnet-explorer.zksync.io/contract_verification'
     },
   },
-  defaultNetwork: 'zkSyncLocalhost',
+  defaultNetwork: "zkSyncTestNode",
   solidity: {
     version: '0.8.17',
     settings: {
@@ -57,4 +64,7 @@ export default {
       },
     },
   },
+  mocha: {
+    timeout: 1000000000000
+  }
 }

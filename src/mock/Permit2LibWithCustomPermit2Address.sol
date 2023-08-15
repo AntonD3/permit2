@@ -6,12 +6,12 @@ import {ERC20} from "solmate/src/tokens/ERC20.sol";
 import {Permit2} from "../Permit2.sol";
 import {IDAIPermit} from "../interfaces/IDAIPermit.sol";
 import {IAllowanceTransfer} from "../interfaces/IAllowanceTransfer.sol";
-import {SafeCast160} from "./SafeCast160.sol";
+import {SafeCast160} from "../libraries/SafeCast160.sol";
 
 /// @title Permit2Lib
 /// @notice Enables efficient transfers and EIP-2612/DAI
 /// permits for any token by falling back to Permit2.
-library Permit2Lib {
+library Permit2LibWithCustomPermit2Address {
     using SafeCast160 for uint256;
     /*//////////////////////////////////////////////////////////////
                                 CONSTANTS
@@ -21,7 +21,7 @@ library Permit2Lib {
     bytes32 internal constant DAI_DOMAIN_SEPARATOR = 0xdbb8cf42e1ecb028be3f3dbc922e1d878b963f411dc388ced501601c60f7c6f7;
 
     /// @dev The address of the Permit2 contract the library will use.
-    Permit2 internal constant PERMIT2 = Permit2(address(0x000000000022D473030F116dDEE9F6B43aC78BA3)); // TODO
+    Permit2 internal constant PERMIT2 = Permit2(address(0x28D81506519D32a212fB098658abf4a9CCe60d59));
 
     /// @notice Transfer a given amount of tokens from one user to another.
     /// @param token The token to transfer.
