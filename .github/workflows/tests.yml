@@ -20,7 +20,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-
+      
       - name: Install dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y \
@@ -46,10 +46,10 @@ jobs:
           key: yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             yarn-
-
+      
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-
+        
       # This is required separately from yarn test because it generates the typechain definitions
       - name: Compile
         run: yarn compile
