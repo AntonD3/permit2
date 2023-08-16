@@ -1,7 +1,6 @@
 import { MockERC20, Permit2 } from '../../typechain-types'
-import { deployContract, provider } from './shared/zkSyncUtils'
+import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS} from './shared/zkSyncUtils'
 import { Wallet } from 'zksync-web3'
-import fs from 'fs'
 import { BigNumber, BigNumberish, ethers } from 'ethers'
 import {
   AllowanceTransferDetails,
@@ -19,7 +18,6 @@ import {
 } from './utils/PermitSignature'
 import { expect } from './shared/expect'
 
-const RICH_WALLET_PRIVATE_KEYS = JSON.parse(fs.readFileSync('test/shared/rich-wallets.json', 'utf8'))
 const DECIMAL_MULT: BigNumber = ethers.BigNumber.from(10).pow(ethers.BigNumber.from(18))
 
 describe('AllowanceTransferTest', function () {

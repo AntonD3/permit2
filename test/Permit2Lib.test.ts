@@ -10,8 +10,7 @@ import {
   MockNonPermitNonERC20WithDS,
   MockSafeERC20,
 } from '../typechain-types'
-import { deployContract, provider, walletDeployContract } from './shared/zkSyncUtils'
-import fs from 'fs'
+import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS, walletDeployContract} from './shared/zkSyncUtils'
 import { expect } from './shared/expect'
 import {
   buildPermitSingle,
@@ -20,7 +19,6 @@ import {
   signDigestSeparate,
 } from './utils/PermitSignature'
 
-const RICH_WALLET_PRIVATE_KEYS = JSON.parse(fs.readFileSync('test/shared/rich-wallets.json', 'utf8'))
 const _PERMIT_DETAILS_TYPEHASH: string = ethers.utils.keccak256(
   ethers.utils.toUtf8Bytes('PermitDetails(address token,uint160 amount,uint48 expiration,uint48 nonce)')
 )
@@ -63,6 +61,7 @@ describe('Permit2Lib', function () {
   let blockTimestamp: BigNumber
 
   before(async function () {
+    //TODO: Rewrite with create2 deploy script with special salt
     let permit2Address = '0x28D81506519D32a212fB098658abf4a9CCe60d59' //precalculated
     permit2 = <Permit2>await walletDeployContract(PERMIT_DEPLOYER, 'Permit2')
 

@@ -1,8 +1,7 @@
 import { BigNumber, BigNumberish, ethers } from 'ethers'
 import { MockERC20, Permit2 } from '../../typechain-types'
-import { deployContract, provider } from './shared/zkSyncUtils'
+import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS} from './shared/zkSyncUtils'
 import { Wallet } from 'zksync-web3'
-import fs from 'fs'
 import { expect } from './shared/expect'
 import {
   getCompactPermitTransferSignature,
@@ -16,9 +15,6 @@ import {
   SignatureTransferDetails,
   TokenPermissions,
 } from './utils/PermitSignature'
-
-const RICH_WALLET_PRIVATE_KEYS = JSON.parse(fs.readFileSync('test/shared/rich-wallets.json', 'utf8'))
-
 describe('SignatureTransferTest', function () {
   const DECIMAL_MULT: BigNumber = ethers.BigNumber.from(10).pow(ethers.BigNumber.from(18))
 

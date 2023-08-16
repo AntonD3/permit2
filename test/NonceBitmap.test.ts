@@ -1,12 +1,8 @@
 import { MockPermit2 } from '../../typechain-types'
-import { deployContract, provider } from './shared/zkSyncUtils'
-import fs from 'fs'
+import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS} from './shared/zkSyncUtils'
 import { Wallet } from 'zksync-web3'
 import { BigNumber, BigNumberish, ethers } from 'ethers'
 import { expect } from './shared/expect'
-
-const RICH_WALLET_PRIVATE_KEYS = JSON.parse(fs.readFileSync('test/shared/rich-wallets.json', 'utf8'))
-
 function getRandomBigInt(): BigNumber {
   return ethers.BigNumber.from(ethers.utils.randomBytes(31)).sub(1)
 }

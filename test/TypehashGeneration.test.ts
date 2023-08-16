@@ -7,13 +7,10 @@ import {
   signDigest,
   TokenPermissions,
 } from './utils/PermitSignature'
-import { deployContract, provider } from './shared/zkSyncUtils'
+import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS} from './shared/zkSyncUtils'
 import { Wallet } from 'zksync-web3'
 import { expect } from './shared/expect'
 import { PermitHashMock } from '../../typechain-types'
-import fs from 'fs'
-
-const RICH_WALLET_PRIVATE_KEYS = JSON.parse(fs.readFileSync('test/shared/rich-wallets.json', 'utf8'))
 class MockWitness {
   constructor(person: string, amount: BigNumber) {
     this.person = person

@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { ethers } from 'ethers'
-import { deployContract, provider } from './shared/zkSyncUtils'
+import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS} from './shared/zkSyncUtils'
 import { MockEIP712WithCustomChainID, Permit2 } from '../../typechain-types'
 import { Wallet } from 'zksync-web3'
 
@@ -12,7 +12,7 @@ describe('EIP712', function () {
 
   let permit2: Permit2
   let EIP712WithCustomChainID: MockEIP712WithCustomChainID
-  let owner: Wallet = new Wallet('0x7726827caac94a7f9e1b160f7ea819f172f7b6f9d2a97f992c38edeab82d4110', provider)
+  let owner: Wallet = new Wallet(RICH_WALLET_PRIVATE_KEYS[0].privateKey, provider)
 
   describe('Test Domain Separator', function () {
     beforeEach('Deploy Permit2', async () => {
