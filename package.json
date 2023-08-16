@@ -30,7 +30,9 @@
     "ts-node": "^10.9.1",
     "typechain": "^8.1.0",
     "typescript": "^5.0.4",
-    "zksync-web3": "^0.14.3"
+    "zksync-web3": "^0.14.3",
+    "prettier": "^2.0.5",
+    "prettier-plugin-solidity": "^1.0.0-alpha.59"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.7.0",
@@ -38,6 +40,8 @@
   },
   "scripts": {
     "compile": "hardhat compile",
-    "test": "hardhat test"
+    "test": "hardhat test",
+    "prettier:fix": "prettier --write '**/*.ts'",
+    "prettier": "prettier --check '**/*.ts'"
   }
 }
