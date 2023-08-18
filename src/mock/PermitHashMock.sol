@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "../libraries/PermitHash.sol";
 import {IAllowanceTransfer} from "../interfaces/IAllowanceTransfer.sol";
 import "../libraries/SignatureVerification.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "../../lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 
 contract PermitHashMock {
     using PermitHash for *;
