@@ -9,7 +9,6 @@ import deploy from './script/deploy'
 task('deploy')
   .addParam('privateKey', 'Private key used to deploy')
   .addParam('jsonRpc', 'JSON RPC URL where the program should be deployed')
-  .addParam('create2Factory', 'Address of the create2 factory')
   .setAction(async (taskArgs) => {
     await deploy(taskArgs)
   })
@@ -17,13 +16,8 @@ task('deploy')
 export default {
   networks: {
     zkSyncLocalhost: {
-      url: 'http://localhost:3050',
-      ethNetwork: 'http://localhost:8545',
-      zksync: true,
-    },
-    zkSyncTestNode: {
       url: 'http://localhost:8011',
-      ethNetwork: 'http://localhost:8545',
+      ethNetwork: '',
       zksync: true,
     },
     zkSyncTestnet: {
@@ -39,7 +33,7 @@ export default {
       verifyURL: 'https://zksync2-mainnet-explorer.zksync.io/contract_verification',
     },
   },
-  defaultNetwork: 'zkSyncTestNode',
+  defaultNetwork: 'zkSyncLocalhost',
   solidity: {
     version: '0.8.17',
     settings: {

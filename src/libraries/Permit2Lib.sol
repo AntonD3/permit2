@@ -21,7 +21,7 @@ library Permit2Lib {
     bytes32 internal constant DAI_DOMAIN_SEPARATOR = 0xdbb8cf42e1ecb028be3f3dbc922e1d878b963f411dc388ced501601c60f7c6f7;
 
     /// @dev The address of the Permit2 contract the library will use.
-    Permit2 internal constant PERMIT2 = Permit2(address(0x000000000022D473030F116dDEE9F6B43aC78BA3)); // TODO
+    Permit2 internal constant PERMIT2 = Permit2(address(0x0000000000225e31D15943971F47aD3022F714Fa));
 
     /// @notice Transfer a given amount of tokens from one user to another.
     /// @param token The token to transfer.

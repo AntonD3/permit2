@@ -37,68 +37,38 @@ You will need a copy of [Foundry](https://github.com/foundry-rs/foundry) install
 ### Setup
 
 ```sh
-git clone https://github.com/Uniswap/permit2.git
+git clone https://github.com/uniswap-zksync/era-permit2.git
 cd permit2
-forge install
+yarn
 ```
 
 ### Lint
 
 ```sh
-forge fmt [--check]
+yarn prettier[:fix]
 ```
 
 ### Run Tests
 
 ```sh
-# unit
-forge test
-
-# integration
-source .env
-FOUNDRY_PROFILE=integration forge test
+yarn compile
+yarn test
 ```
 
 ### Update Gas Snapshots
 
 ```sh
-forge snapshot
+UPDATE_SNAPSHOT=1 yarn test
 ```
 
 ### Deploy
 
-Run the command below. Remove `--broadcast`, `---rpc-url`, `--private-key` and `--verify` options to test locally
+Run the command below. Remove `--hson-rpc` and `--private-key` options to test locally
 
 ```sh
-forge script --broadcast --rpc-url <RPC-URL> --private-key <PRIVATE_KEY> --verify script/DeployPermit2.s.sol:DeployPermit2
+yarn deploy --json-rpc <RPC-URL> --private-key <PRIVATE_KEY>
 ```
 
 ## Acknowledgments
 
 Inspired by [merklejerk](https://github.com/merklejerk)'s [permit-everywhere](https://github.com/merklejerk/permit-everywhere) contracts which introduce permit based approvals for all tokens regardless of EIP2612 support.
-
-## ZK-Sync Era setup test
-
-1. Init submodules(solmate/openzeppelin)
-
-```sh
-git submodule init
-```
-
-2. Clone submodules(solmate/openzeppelin)
-
-```sh
-git submodule update
-```
-
-3. Install via yarn dev dependencies
-
-```sh
-yarn install
-```
-
-4. Run test
-
-```sh
-yarn hardhat test --network zkSyncLocalSetup
-```

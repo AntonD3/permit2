@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { ethers } from 'ethers'
-import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS} from './shared/zkSyncUtils'
+import { deployContract, provider, RICH_WALLET_PRIVATE_KEYS } from './shared/zkSyncUtils'
 import { MockEIP712WithCustomChainID, Permit2 } from '../../typechain-types'
 import { Wallet } from 'zksync-web3'
 

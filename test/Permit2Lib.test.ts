@@ -10,7 +10,7 @@ import {
   MockNonPermitNonERC20WithDS,
   MockSafeERC20,
 } from '../typechain-types'
-import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS, walletDeployContract} from './shared/zkSyncUtils'
+import { deployContract, provider, RICH_WALLET_PRIVATE_KEYS, walletDeployContract } from './shared/zkSyncUtils'
 import { expect } from './shared/expect'
 import {
   buildPermitSingle,
@@ -61,8 +61,8 @@ describe('Permit2Lib', function () {
   let blockTimestamp: BigNumber
 
   before(async function () {
-    //TODO: Rewrite with create2 deploy script with special salt
-    let permit2Address = '0x28D81506519D32a212fB098658abf4a9CCe60d59' //precalculated
+    //TODO: Rewrite with create2 with special salt
+    let permit2Address = '0x28D81506519D32a212fB098658abf4a9CCe60d59' // precalculated
     permit2 = <Permit2>await walletDeployContract(PERMIT_DEPLOYER, 'Permit2')
 
     if (permit2Address != permit2.address) {

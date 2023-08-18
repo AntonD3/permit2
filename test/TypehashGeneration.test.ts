@@ -7,7 +7,7 @@ import {
   signDigest,
   TokenPermissions,
 } from './utils/PermitSignature'
-import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS} from './shared/zkSyncUtils'
+import { deployContract, provider, RICH_WALLET_PRIVATE_KEYS } from './shared/zkSyncUtils'
 import { Wallet } from 'zksync-web3'
 import { expect } from './shared/expect'
 import { PermitHashMock } from '../../typechain-types'

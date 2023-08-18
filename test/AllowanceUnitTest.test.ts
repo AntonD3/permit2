@@ -1,5 +1,5 @@
 import { Wallet } from 'zksync-web3'
-import {deployContract, provider, RICH_WALLET_PRIVATE_KEYS} from './shared/zkSyncUtils'
+import { deployContract, provider, RICH_WALLET_PRIVATE_KEYS } from './shared/zkSyncUtils'
 import { MockERC20, MockPermit2 } from '../../typechain-types'
 import { BigNumber, BigNumberish, ethers } from 'ethers'
 import { expect } from './shared/expect'
