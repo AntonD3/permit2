@@ -10,32 +10,20 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/checkout@v3
-        with:
-          repository: 'matter-labs/era-test-node'
-          ref: 'ad-dev'
-          path: era-test-node
+      - uses: actions/checkout@v1
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-      
-      - name: Install dependencies
+      - name: Install Test Node
         run: |
-          sudo apt-get update && sudo apt-get install -y \
-            cmake pkg-config libssl-dev clang
+          curl -sL https://github.com/matter-labs/era-test-node/releases/download/v0.1.0/era_test_node-v0.1.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
 
-      - name: Build and Run Test Node
+      - name: Run Test Node
         working-directory: ./era-test-node
         run: |
-          cargo build --release
-          cargo run --release run &
-          sleep 5
+          ./era_test_node &
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 12.x
 
       - id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -55,4 +43,4 @@ jobs:
         run: yarn compile
 
       - name: Run tests
-        run: yarn test --network zkSyncTestNode
+        run: yarn test
