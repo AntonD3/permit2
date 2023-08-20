@@ -17,9 +17,8 @@ jobs:
           curl -sL https://github.com/matter-labs/era-test-node/releases/download/v0.1.0/era_test_node-v0.1.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
 
       - name: Run Test Node
-        working-directory: ./era-test-node
         run: |
-          ./era_test_node &
+          ./era_test_node run &
 
       - uses: actions/setup-node@v1
         with:
