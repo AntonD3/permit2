@@ -16,7 +16,7 @@ jobs:
 
       - name: libssl fix
         run: |
-          sudo apt-get update sudo apt-get install libssl1.0.0 libssl-dev
+          sudo apt-get update && sudo apt-get install libssl1.0.0 libssl-dev
 
       - name: Install test node
         run: |
