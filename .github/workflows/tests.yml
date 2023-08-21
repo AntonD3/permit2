@@ -25,7 +25,8 @@ jobs:
 
       - name: Link libssl
         run: |
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libssl.so /lib/x86_64-linux-gnu/libssl.so.1.0.0
+          sudo ln -s /usr/lib/x86_64-linux-gnu/libssl.so /lib/x86_64-linux-gnu/libssl.so.1.0.0 && \
+          sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
 
       - name: Install test node
         run: |
