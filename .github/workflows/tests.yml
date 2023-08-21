@@ -19,6 +19,10 @@ jobs:
           sudo apt-get update && sudo apt-get install -y \
             cmake pkg-config libssl-dev clang
 
+      - name: Link libssl
+        run: |
+          sudo ln -s /lib/x86_64-linux-gnu/libssl.so.1.0.0 /lib/x86_64-linux-gnu/libssl.so.10
+
       - name: Install test node
         run: |
           curl -sL https://github.com/matter-labs/era-test-node/releases/download/v0.1.0/era_test_node-v0.1.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
