@@ -8,15 +8,11 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-
-      - name: libssl fix
-        run: |
-          sudo apt-get update && sudo apt-get install libssl1.0.0 libssl-dev
 
       - name: Install test node
         run: |
