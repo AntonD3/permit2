@@ -8,7 +8,7 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
         with:
@@ -23,10 +23,10 @@ jobs:
 #        run: |
 #          sudo find / -name 'libssl*'
 
-      - name: Link libssl
-        run: |
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libssl.so /lib/x86_64-linux-gnu/libssl.so.1.0.0 && \
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+#      - name: Link libssl
+#        run: |
+#          sudo ln -s /usr/lib/x86_64-linux-gnu/libssl.so /lib/x86_64-linux-gnu/libssl.so.1.0.0 && \
+#          sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
 
       - name: Install test node
         run: |
