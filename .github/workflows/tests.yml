@@ -19,6 +19,10 @@ jobs:
           sudo apt-get update && sudo apt-get install -y \
             cmake pkg-config libssl-dev clang
 
+      - name: Debug info
+        run: |
+          find / -name 'libssl*'
+
       - name: Link libssl
         run: |
           sudo ln -s /lib/x86_64-linux-gnu/libssl.so.1.0.0 /lib/x86_64-linux-gnu/libssl.so.10
