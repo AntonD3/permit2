@@ -14,16 +14,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Download artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: era_test_node-ubuntu-latest.tar.gz
-
       - name: Start the era_test_node
         id: start_node
         run: |
           echo "Extracting era_test_node binary"
-          tar -xzf era_test_node-ubuntu-latest.tar.gz
+          curl -sL https://github.com/matter-labs/era-test-node/releases/download/v0.1.0/era_test_node-v0.1.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
           chmod +x era_test_node
           echo "Starting node in background"
           ./era_test_node run 2>&1 | tee era_test_node_ouput.log &
