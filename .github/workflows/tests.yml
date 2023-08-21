@@ -14,10 +14,9 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install dependencies
+      - name: libssl fix
         run: |
-          sudo apt-get update && sudo apt-get install -y \
-            cmake pkg-config libssl-dev clang
+          ln -s /lib/x86_64-linux-gnu/libssl.so.1 /lib/x86_64-linux-gnu/libssl.so.1.0.0
 
       - name: Install test node
         run: |
