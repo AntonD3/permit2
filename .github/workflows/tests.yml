@@ -14,23 +14,20 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install test node dependencies
-        run: |
-          sudo apt-get update && sudo apt-get install -y \
-            cmake pkg-config libssl-dev clang
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: era_test_node-ubuntu-latest.tar.gz
 
-#      - name: Debug info
-#        run: |
-#          sudo find / -name 'libssl*'
-
-      - name: Link libssl
+      - name: Start the era_test_node
+        id: start_node
         run: |
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libssl.so /lib/x86_64-linux-gnu/libssl.so.1.0.0 && \
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
-
-      - name: Install test node
-        run: |
-          curl -sL https://github.com/matter-labs/era-test-node/releases/download/v0.1.0/era_test_node-v0.1.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          echo "Extracting era_test_node binary"
+          tar -xzf era_test_node-ubuntu-latest.tar.gz
+          chmod +x era_test_node
+          echo "Starting node in background"
+          ./era_test_node run 2>&1 | tee era_test_node_ouput.log &
+          echo "PID=$!" >> $GITHUB_ENV
 
       - name: Run test node
         run: |
