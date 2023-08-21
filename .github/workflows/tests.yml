@@ -16,7 +16,7 @@ jobs:
 
       - name: libssl fix
         run: |
-          ln -s /lib/x86_64-linux-gnu/libssl.so.1 /lib/x86_64-linux-gnu/libssl.so.1.0.0
+          sudo ln -s /lib/x86_64-linux-gnu/libssl.so.1 /lib/x86_64-linux-gnu/libssl.so.1.0.0
 
       - name: Install test node
         run: |
