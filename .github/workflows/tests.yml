@@ -30,7 +30,11 @@ jobs:
 
       - name: Install test node
         run: |
-          curl -sL https://github.com/matter-labs/era-test-node/suites/15355900259/artifacts/876886264 | tar xz
+          sudo apt-get install unzip &&
+          curl -o node.zip https://github.com/matter-labs/era-test-node/suites/15355900259/artifacts/876886264
+          unzip node.zip
+          tar -xzf era_test_node-x86_64-unknown-linux-musl.tar.gz.zip
+          chmod +x era_test_node
 
       - name: Run test node
         run: |
