@@ -51,6 +51,8 @@ yarn prettier[:fix]
 
 ### Run Tests
 
+The tests are running against the [test node](https://github.com/matter-labs/era-test-node).
+
 ```sh
 yarn compile
 yarn test
