@@ -37,6 +37,8 @@
     "compile": "hardhat compile",
     "test": "hardhat test",
     "deploy": "hardhat deploy",
+    "presymlink": "rm -rf ./solmate && rm -rf ./openzeppelin-contracts",
+    "symlink": "ln -s ./lib/solmate/src ./solmate && ln -s ./lib/openzeppelin-contracts ./openzeppelin-contracts",
     "prettier:fix": "prettier --write '**/*.ts' && forge fmt",
     "prettier": "prettier --check '**/*.ts' && forge fmt --check"
   }
