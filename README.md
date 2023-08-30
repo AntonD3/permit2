@@ -46,7 +46,7 @@ yarn
 ### Lint
 
 ```sh
-yarn prettier[:fix]
+forge fmt [--check]
 ```
 
 ### Run Tests
@@ -66,7 +66,7 @@ UPDATE_SNAPSHOT=1 yarn test
 
 ### Deploy
 
-Run the command below. Remove `--hson-rpc` and `--private-key` options to test locally
+Run the command below.
 
 ```sh
 yarn deploy --json-rpc <RPC-URL> --private-key <PRIVATE_KEY>
