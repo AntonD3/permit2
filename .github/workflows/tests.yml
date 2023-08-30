@@ -15,6 +15,14 @@ jobs:
         with:
           toolchain: stable
 
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Install foundry dependencies
+        run: forge install
+
       - name: Install test node dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y \
