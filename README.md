@@ -46,7 +46,7 @@ yarn
 ### Lint
 
 ```sh
-forge fmt [--check]
+yarn prettier[:fix]
 ```
 
 ### Run Tests
