@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
@@ -22,15 +19,6 @@ jobs:
 
       - name: Install foundry dependencies
         run: forge install
-
-      - name: Install test node dependencies
-        run: |
-          sudo apt-get update && sudo apt-get install -y \
-            cmake pkg-config libssl-dev clang
-
-      - name: Install test node
-        run: |
-          cargo install --git https://github.com/matter-labs/era-test-node.git --locked
 
       - uses: actions/setup-node@v1
         with:
@@ -52,10 +40,6 @@ jobs:
       # This is required separately from yarn test because it generates the typechain definitions
       - name: Compile
         run: yarn compile
-
-      - name: Run test node
-        run: |
-          era_test_node run &
 
       - name: Run tests
         run: yarn test
